@@ -1,0 +1,90 @@
+\documentclass[11pt,a4paper]{article}
+
+% Packages
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{tabularx}
+
+% Compact section spacing
+\titlespacing*{\section}{0pt}{0.6em}{0.3em}
+\titlespacing*{\subsection}{0pt}{0.4em}{0.2em}
+\setlist[itemize]{noitemsep, topsep=0pt}
+
+% Sections 1 to 4: at most 8 pages. Appendix: at most 1 page.
+% The statement of contribution is not counted.
+% ENG5338 groups: replace ENG4200 with ENG5338 in the title.
+
+%---------------------------
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{ENG4200 Coursework 2: Group Report}}\\[0.5em]
+    \textbf{Group ID:} \underline{\hspace{3cm}} \\[0.5em]
+    Group Members (Name + ID):
+    \begin{itemize}
+        \item Member 1
+        \item Member 2
+        \item Member 3
+        \item Member 4
+        \item Member 5
+    \end{itemize}
+    Dataset: \underline{\hspace{6cm}} \\[0.5em]
+    Repository (optional): \underline{\hspace{6cm}}
+\end{center}
+
+\vspace{1em}
+
+%---------------------------------------
+\section*{1. Engineering Question \& Constraints}
+State the prediction task, the engineering question your group asks, and the one or two constraints a deployed model must meet. Justify each constraint from the application.
+
+%---------------------------------------
+\section*{2. Experimental Design}
+Describe the protocol every model shares (split, folds, metric, preprocessing, how cost is measured). Give the models in your pool and the linear or logistic regression reference, why each was chosen, and how each was tuned.
+
+%---------------------------------------
+\section*{3. Comparative Analysis}
+Compare all models on \textbf{predictive performance (on your chosen metric), overfitting and computational cost} in one main table or figure. Further tables or figures are welcome where they support the analysis.
+\begin{center}
+    % Replace this box with your table, or with your figure, e.g.
+    % \includegraphics[width=0.75\textwidth]{comparison.png}
+    \fbox{\parbox[c][5cm][c]{0.73\textwidth}{\centering Main comparison table or figure}}
+\end{center}
+
+%---------------------------------------
+\section*{4. Recommended Pipeline}
+Recommend a pipeline under your constraints and give its test-set score. Discuss the trade-offs and limitations, and say what would change your recommendation.
+
+%---------------------------------------
+\section*{Appendix (optional, max 1 page)}
+Extra figures or tables if required.
+
+%---------------------------------------
+\section*{Statement of Contribution (not counted in the page limit)}
+For each member: what they mainly implemented, what they mainly wrote, and where it is in the notebook. Below the table, say which AI tools the group used and what for. All members have read and agree with this statement.
+
+\vspace{0.5em}
+\noindent
+\begin{tabularx}{\textwidth}{|l|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+\hline
+\textbf{Member (Name + ID)} & \textbf{Mainly implemented} & \textbf{Mainly wrote} & \textbf{Where in the notebook} \\
+\hline
+Member 1 & & & \\
+\hline
+Member 2 & & & \\
+\hline
+Member 3 & & & \\
+\hline
+Member 4 & & & \\
+\hline
+Member 5 & & & \\
+\hline
+\end{tabularx}
+
+\vspace{0.5em}
+\noindent\textbf{AI tools used, and what for:}
+
+\end{document}
