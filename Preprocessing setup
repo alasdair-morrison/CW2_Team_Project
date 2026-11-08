@@ -1,0 +1,37 @@
+import numpy as np
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.pipeline import Pipeline
+from sklearn.model_selection import KFold
+from sklearn.metrics import make_scorer
+
+# 1. PREPROCESSING PIPELINE
+# Assuming column 0 is 'Sex' (categorical) and columns 1-8 are 
+# the numerical physical measurements of the abalone.
+preprocessor = ColumnTransformer(
+    transformers=[
+        ('cat', OneHotEncoder(handle_unknown='ignore'), [0]),  # Encodes Sex (M, F, I)
+        ('num', StandardScaler(), slice(1, 9))                 # Scales measurements
+    ]
+)
+
+#When you build your model pipelines, plug the preprocessor object at the very beginning of your pipeline 
+#before your estimator so that scaling and encoding happen safely inside the CV loop.
+
+# 2. SHARED CROSS-VALIDATION PROTOCOL
+# The brief requires every model to use the exact same folds. 
+shared_cv = KFold(n_splits=5, shuffle=True, random_state=42) 
+#pls use shared_cv for all your cross-validation loops 
+#so we are evaluating models on the exact same data splits
+
+# 3. CUSTOM CONSTRAINT METRIC (+/- 3 years for 90% of cases)
+def within_tolerance_score(y_true, y_pred):
+    """
+    Calculates the fraction of predictions that fall within 
+    +/- 3 units (years/rings) of the true value.
+    """
+    abs_errors = np.abs(y_true - y_pred)
+    fraction_within = np.mean(abs_errors <= 3.0)
+    return fraction_within
+
+constraint_scorer = make_scorer(within_tolerance_score, greater_is_better=True)
